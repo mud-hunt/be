@@ -26,7 +26,7 @@ def clear_data():
 
 def create_rooms():
     """Creates all rooms"""
-    logger.info("Creating rooms")
+    self.stdout.write("Creating rooms")
     with open('seed.json') as json_file:
       data = json.load(json_file)
       rooms = dict()
@@ -41,38 +41,17 @@ def create_rooms():
     """
     Example room
       {
-        "id": 1,
+        "id": 1,  // Can be a string
         "title": "some_title",
         "description": "some_description",
         "connections": [
           {
-            "id": 2,
-            "dir": 'n'
+            "id": 2, // Can be a string
+            "dir": "n"
           }
         ]
       }
     """
-
-    r_outside = Room(title="Outside Cave Entrance",
-                  description="North of you, the cave mount beckons")
-
-    r_foyer = Room(title="Foyer", description="""Dim light filters in from the south. Dusty
-    passages run north and east.""")
-
-    r_overlook = Room(title="Grand Overlook", description="""A steep cliff appears before you, falling
-    into the darkness. Ahead to the north, a light flickers in
-    the distance, but there is no way across the chasm.""")
-
-    r_narrow = Room(title="Narrow Passage", description="""The narrow passage bends here from west
-    to north. The smell of gold permeates the air.""")
-
-    r_treasure = Room(title="Treasure Chamber", description="""You've found the long-lost treasure
-    chamber! Sadly, it has already been completely emptied by
-    earlier adventurers. The only exit is to the south.""")
-
-    r_test = Room(title="Test room", description="""You've found the long-lost treasure
-    chamber! Sadly, it has already been completely emptied by
-    earlier adventurers. The only exit is to the south.""")
 
     players=Player.objects.all()
     for p in players:
