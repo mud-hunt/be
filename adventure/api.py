@@ -66,7 +66,10 @@ def say(request):
     # IMPLEMENT
     return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
 
-@csrf_exempt
 @api_view(["GET"])
 def rooms(request):
-    return JsonResponse(list(Room.objects.all().values()), safe=False, status=500)
+    user = request.user
+    if hasattr(user, 'player'):
+        return JsonResponse(list(Room.objects.all().values("id", "title", "n_to", "s_to", "e_to", "w_to")), safe=False, status=400)
+    else:
+        return JsonResponse({'error':"Login you scrub"}, safe=False, status=500)
