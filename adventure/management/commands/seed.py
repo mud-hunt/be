@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
 import os.path
+import time
 
 this_path = os.path.abspath(os.path.dirname(__file__))
 rooms_path = os.path.join(this_path, "../../seeds/rooms.json")
@@ -25,13 +26,16 @@ class Command(BaseCommand):
 
 def clear_data():
     """Deletes all the table data"""
-    logger.info("Delete Room instances")
-    Room.objects.all().delete()
+    print("Deleting room instances...")
+    rooms = Room.objects.all()
+    rooms.delete()
+    print(f"Deleted {len(rooms)} rooms")
 
 
 def create_rooms():
     """Creates all rooms"""
-    print("Creating rooms")
+    print("Creating rooms...")
+    start_time = time.time()
     rooms = dict()
     with open(rooms_path) as json_file:
       data = json.load(json_file)
@@ -42,26 +46,37 @@ def create_rooms():
       for room in data:
         for conn in room["connections"]:
           rooms[room["id"]].connectRooms(rooms[conn["id"]], conn["dir"])
+    end_time = time.time()
+    print(f"Created {len(rooms)} rooms in {end_time - start_time} seconds")
 
     """
     Example room
       {
-        "id": 1,  // Can be a string
+        "id": "start_room",  // Can be a string
         "title": "some_title",
         "description": "some_description",
         "connections": [
           {
-            "id": 2, // Can be a string
+            "id": "start_room", // Can be a string
             "dir": "n"
           }
         ]
       }
     """
 
+    start_room = 0
+    if "start_room" in rooms:
+      start_room = rooms["start_room"].id
+    else:
+      start_room = list(rooms.values())[0].id
+
+    print("Resetting player positions")
+
     players=Player.objects.all()
     for p in players:
-      p.currentRoom=rooms["start_room"].id
+      p.currentRoom=start_room
       p.save()
+      
 
 def run_seed(self):
     """Seed database with rooms"""
