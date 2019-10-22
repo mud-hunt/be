@@ -36,12 +36,12 @@ def create_rooms():
       data = json.load(json_file)
       rooms = dict()
       for room in data:
-        new_room = Room(title=room.title, description=room.description)
+        new_room = Room(title=room["title"], description=room["description"])
         new_room.save()
-        rooms[room.id] = new_room
+        rooms[room["id"]] = new_room
       for room in data:
-        for conn in room.connections:
-          rooms[room.id].connectRooms(rooms[conn.id], conn.dir)
+        for conn in room["connections"]:
+          rooms[room["id"]].connectRooms(rooms[conn["id"]], conn["dir"])
 
     """
     Example room
