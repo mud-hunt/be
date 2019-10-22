@@ -60,7 +60,7 @@ def create_rooms():
 
     players=Player.objects.all()
     for p in players:
-      p.currentRoom=rooms[1].id
+      p.currentRoom=rooms["start_room"].id
       p.save()
 
 def run_seed(self):
