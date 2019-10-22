@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +27,32 @@ def clear_data():
 def create_rooms():
     """Creates all rooms"""
     logger.info("Creating rooms")
+    with open('seed.json') as json_file:
+      data = json.load(json_file)
+      rooms = dict()
+      for room in data:
+        new_room = Room(title=room.title, description=room.description)
+        new_room.save()
+        rooms[room.id] = new_room
+      for room in data:
+        for conn in room.connections:
+          rooms[room.id].connectRooms(rooms[conn.id], conn.dir)
+
+    """
+    Example room
+      {
+        "id": 1,
+        "title": "some_title",
+        "description": "some_description",
+        "connections": [
+          {
+            "id": 2,
+            "dir": 'n'
+          }
+        ]
+      }
+    """
+
     r_outside = Room(title="Outside Cave Entrance",
                   description="North of you, the cave mount beckons")
 
@@ -46,23 +73,6 @@ def create_rooms():
     r_test = Room(title="Test room", description="""You've found the long-lost treasure
     chamber! Sadly, it has already been completely emptied by
     earlier adventurers. The only exit is to the south.""")
-
-    r_outside.save()
-    r_foyer.save()
-    r_overlook.save()
-    r_narrow.save()
-    r_treasure.save()
-    r_test.save()
-
-    # Link rooms together
-    r_outside.connectRooms(r_foyer, "n")
-
-    r_foyer.connectRooms(r_overlook, "n")
-
-    r_foyer.connectRooms(r_narrow, "e")
-
-    r_narrow.connectRooms(r_treasure, "n")
-    r_treasure.connectRooms(r_test, "e")
 
     players=Player.objects.all()
     for p in players:
