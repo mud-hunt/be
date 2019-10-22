@@ -1,6 +1,11 @@
 from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
+import os.path
+
+this_path = os.path.abspath(os.path.dirname(__file__))
+rooms_path = os.path.join(this_path, "../../seeds/rooms.json")
+
 import logging
 import json
 
@@ -27,7 +32,7 @@ def clear_data():
 def create_rooms():
     """Creates all rooms"""
     print("Creating rooms")
-    with open('seed.json') as json_file:
+    with open(rooms_path) as json_file:
       data = json.load(json_file)
       rooms = dict()
       for room in data:
