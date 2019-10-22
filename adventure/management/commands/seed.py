@@ -26,7 +26,7 @@ def clear_data():
 
 def create_rooms():
     """Creates all rooms"""
-    self.stdout.write("Creating rooms")
+    print("Creating rooms")
     with open('seed.json') as json_file:
       data = json.load(json_file)
       rooms = dict()
