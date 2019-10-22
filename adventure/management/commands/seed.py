@@ -32,9 +32,9 @@ def clear_data():
 def create_rooms():
     """Creates all rooms"""
     print("Creating rooms")
+    rooms = dict()
     with open(rooms_path) as json_file:
       data = json.load(json_file)
-      rooms = dict()
       for room in data:
         new_room = Room(title=room["title"], description=room["description"])
         new_room.save()
@@ -60,7 +60,7 @@ def create_rooms():
 
     players=Player.objects.all()
     for p in players:
-      p.currentRoom=r_outside.id
+      p.currentRoom=rooms[1].id
       p.save()
 
 def run_seed(self):
