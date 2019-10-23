@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "Outside Cave Entrance",
+    "description": "North of you, the cave mount beckons",
+    "connections": [
+      {
+        "id": 2,
+        "dir": "n"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Foyer",
+    "description": "Dim light filters in from the south. Dusty passages run north and east.",
+    "connections": [
+      {
+        "id": 3,
+        "dir": "n"
+      },
+      {
+        "id": 4,
+        "dir": "e"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Grand Overlook",
+    "description": "A steep cliff appears before you, falling into the darkness. Ahead to the north, a light flickers in the distance, but there is no way across the chasm.",
+    "connections": []
+  },
+  {
+    "id": 4,
+    "title": "Narrow Passage",
+    "description": "The narrow passage bends here from west to north. The smell of gold permeates the air.",
+    "connections": [
+      {
+        "id": 5,
+        "dir": "n"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Treasure Chamber",
+    "description": "You've found the long-lost treasure chamber! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.",
+    "connections": []
+  }
+]
