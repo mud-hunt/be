@@ -50,7 +50,7 @@ def initialize(request):
     return JsonResponse({'uuid': uuid, 'name':player.user.username, 'roomId':room.id, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
 
 
-# @csrf_exempt
+@csrf_exempt
 @login_required_403
 @api_view(["POST"])
 def move(request):
