@@ -14,23 +14,33 @@ class Room(models.Model):
     w_to = models.IntegerField(default=0)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
+        destinationRoom = None
         try:
             destinationRoom = Room.objects.get(id=destinationRoomID)
+            if not hasattr(self, 'id'):
+                raise RuntimeError('Not saved yet')
         except Room.DoesNotExist:
             print("That room does not exist")
+        except RuntimeError:
+            print("Room not saved yet")
         else:
             if direction == "n":
                 self.n_to = destinationRoomID
+                destinationRoom.s_to = self.id
             elif direction == "s":
                 self.s_to = destinationRoomID
+                destinationRoom.n_to = self.id
             elif direction == "e":
                 self.e_to = destinationRoomID
+                destinationRoom.w_to = self.id
             elif direction == "w":
                 self.w_to = destinationRoomID
+                destinationRoom.e_to = self.id
             else:
                 print("Invalid direction")
                 return
             self.save()
+            destinationRoom.save()
     def playerNames(self, currentPlayerID):
         return [p.user.username for p in Player.objects.filter(currentRoom=self.id) if p.id != int(currentPlayerID)]
     def playerUUIDs(self, currentPlayerID):
