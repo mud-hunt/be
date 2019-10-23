@@ -47,7 +47,7 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'roomId':room.id, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
 
 
 # @csrf_exempt
@@ -100,6 +100,6 @@ def say(request):
 def rooms(request):
     user = request.user
     if hasattr(user, 'player'):
-        return JsonResponse(list(Room.objects.all().values("id", "title", "n_to", "s_to", "e_to", "w_to")), safe=False, status=200)
+        return JsonResponse(list(Room.objects.all().values("id", "title","description", "n_to", "s_to", "e_to", "w_to")), safe=False, status=200)
     else:
         return JsonResponse({'error':"No player"}, safe=False, status=500)
