@@ -82,7 +82,7 @@ def move(request):
         #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
         # for p_uuid in nextPlayerUUIDs:
         #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
-        return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'players':players, 'error_msg':""}, safe=True)
+        return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'players':players}, safe=True)
     else:
         players = room.playerNames(player_id)
         return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'error_msg':"You cannot move that way."}, safe=True)
@@ -100,6 +100,6 @@ def say(request):
 def rooms(request):
     user = request.user
     if hasattr(user, 'player'):
-        return JsonResponse(list(Room.objects.all().values("id", "title","description", "n_to", "s_to", "e_to", "w_to")), safe=False, status=200)
+        return JsonResponse(list(Room.objects.all().values("id", "n_to", "s_to", "e_to", "w_to")), safe=False, status=200)
     else:
         return JsonResponse({'error':"No player"}, safe=False, status=500)
