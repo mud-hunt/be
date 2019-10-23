@@ -50,8 +50,8 @@ def initialize(request):
     return JsonResponse({'uuid': uuid, 'name':player.user.username, 'roomId':room.id, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
 
 
-@csrf_exempt
 @login_required_403
+@csrf_exempt
 @api_view(["POST"])
 def move(request):
     dirs={"n": "north", "s": "south", "e": "east", "w": "west"}
@@ -59,8 +59,7 @@ def move(request):
     player = request.user.player
     player_id = player.id
     player_uuid = player.uuid
-    data = json.loads(request.body)
-    direction = data['direction']
+    direction = request.data['direction']
     room = player.room()
     nextRoomID = None
     if direction == "n":
