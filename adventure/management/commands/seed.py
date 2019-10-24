@@ -37,12 +37,14 @@ def create_rooms():
     print("Creating rooms...")
     start_time = time.time()
     rooms = dict()
+    id_map = dict()
     with open(rooms_path) as json_file:
       data = json.load(json_file)
       for room in data:
-        new_room = Room(title=room["title"], description=room["description"])
+        new_room = Room(id=room["id"], title=room["title"], description=room["description"])
         new_room.save()
         rooms[room["id"]] = new_room
+        id_map[room["id"]] = new_room.id
       for room in data:
         for conn in room["connections"]:
           rooms[room["id"]].connectRooms(rooms[conn["id"]], conn["dir"])
