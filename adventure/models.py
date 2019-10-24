@@ -5,30 +5,6 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
 
-def connectRooms(base_id, dest_id, direction):
-    base = Room.objects.get(id=base_id)
-    dest = Room.objects.get(id=dest_id)
-    if (not base) or (not dest):
-        print("One of the rooms does not exists")
-        return
-    if direction == "n":
-        base.n_to = des.id
-        dest.s_to = base.id
-    elif direction == "s":
-        base.s_to = des.id
-        dest.n_to = base.id
-    elif direction == "e":
-        base.e_to = des.id
-        destinationRoom.w_to = base.id
-    elif direction == "w":
-        base.w_to = des.id
-        dest.e_to = base.id
-    else:
-        print("Invalid direction")
-        return
-    base.save()
-    dest.save()
-
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
     description = models.CharField(max_length=500, default="DEFAULT DESCRIPTION")
@@ -46,16 +22,16 @@ class Room(models.Model):
         except RuntimeError:
             print("Room not saved yet")
         else:
-            if direction == "n":
+            if direction == "n" and self.n_to == 0 and destinationRoom.s_to == 0:
                 self.n_to = destinationRoomID
                 destinationRoom.s_to = self.id
-            elif direction == "s":
+            elif direction == "s"  and self.s_to == 0 and destinationRoom.n_to == 0:
                 self.s_to = destinationRoomID
                 destinationRoom.n_to = self.id
-            elif direction == "e":
+            elif direction == "e"  and self.e_to == 0 and destinationRoom.w_to == 0:
                 self.e_to = destinationRoomID
                 destinationRoom.w_to = self.id
-            elif direction == "w":
+            elif direction == "w"  and self.w_to == 0 and destinationRoom.e_to == 0:
                 self.w_to = destinationRoomID
                 destinationRoom.e_to = self.id
             else:
