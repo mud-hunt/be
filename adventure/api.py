@@ -88,8 +88,10 @@ def move(request):
 @csrf_exempt
 @api_view(["POST"])
 def say(request):
- for p_uuid in currentPlayerUUIDs:
-    pusher.trigger(f'message-channel', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
+    pusher.trigger(u'message-channel', u'message', {
+        u'username': request.user.username,
+        u'message': request.data["message"]
+    })
 
 @api_view(["GET"])
 def rooms(request):
