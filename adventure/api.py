@@ -37,7 +37,6 @@ def login_required_403(function=None):
 # instantiate pusher
 # pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
-@login_required_403
 @csrf_exempt
 @api_view(["GET"])
 def initialize(request):
@@ -50,7 +49,6 @@ def initialize(request):
     return JsonResponse({'uuid': uuid, 'name':player.user.username, 'roomId':room.id, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
 
 
-@login_required_403
 @api_view(["POST"])
 @csrf_exempt
 def move(request):
@@ -88,13 +86,11 @@ def move(request):
 
 
 @csrf_exempt
-@login_required_403
 @api_view(["POST"])
 def say(request):
     # IMPLEMENT
     return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
 
-@login_required_403
 @api_view(["GET"])
 def rooms(request):
     user = request.user
