@@ -51,8 +51,8 @@ def initialize(request):
 
 
 @login_required_403
-@csrf_exempt
 @api_view(["POST"])
+@csrf_exempt
 def move(request):
     dirs={"n": "north", "s": "south", "e": "east", "w": "west"}
     reverse_dirs = {"n": "south", "s": "north", "e": "west", "w": "east"}
