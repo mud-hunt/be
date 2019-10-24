@@ -65,8 +65,8 @@ MIDDLEWARE = [
     #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
 
@@ -135,14 +135,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ORIGIN_ALLOW_ALL=False
-
-CORS_ALLOW_CREDENTIALS=True
-
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'https://mudhunt.netlify.com',
-)
+CORS_ORIGIN_ALLOW_ALL=True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -163,6 +156,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
