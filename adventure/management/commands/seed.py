@@ -66,9 +66,9 @@ def create_rooms():
       }
     """
 
-    start_room = 0
-    if "start_room" in rooms:
-      start_room = rooms["start_room"].id
+    start_room = 1
+    if 1 in rooms:
+      start_room = rooms[1].id
     else:
       start_room = list(rooms.values())[0].id
 
