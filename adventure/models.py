@@ -14,9 +14,7 @@ class Room(models.Model):
     w_to = models.IntegerField(default=0)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
-        destinationRoom = None
         try:
-            destinationRoom = Room.objects.get(id=destinationRoomID)
             if not hasattr(self, 'id'):
                 raise RuntimeError('Not saved yet')
         except Room.DoesNotExist:
