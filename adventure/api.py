@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-# from pusher import Pusher
+from pusher import Pusher
 from django.http import JsonResponse
 from decouple import config
 from django.contrib.auth.models import User
@@ -35,7 +35,7 @@ def login_required_403(function=None):
     return actual_decorator
 
 # instantiate pusher
-# pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
+pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
 @csrf_exempt
 @api_view(["GET"])
@@ -75,10 +75,11 @@ def move(request):
         players = nextRoom.playerNames(player_id)
         currentPlayerUUIDs = room.playerUUIDs(player_id)
         nextPlayerUUIDs = nextRoom.playerUUIDs(player_id)
-        # for p_uuid in currentPlayerUUIDs:
-        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
-        # for p_uuid in nextPlayerUUIDs:
-        #     pusher.trigger(f'p-channel-{p_uuid}', u'broadcast', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
+        pusher.trigger(u'message-channel', u'player-move', {'message':f'{player.user.username} has walked {dirs[direction]}.'})
+        for p_uuid in currentPlayerUUIDs:
+            pusher.trigger(f'p-channel-{p_uuid}', u'player-move', {'message':f'{player.user.username} has left to the {dirs[direction]}.'})
+        for p_uuid in nextPlayerUUIDs:
+            pusher.trigger(f'p-channel-{p_uuid}', u'player-move', {'message':f'{player.user.username} has entered from the {reverse_dirs[direction]}.'})
         return JsonResponse({'name':player.user.username, 'title':nextRoom.title, 'description':nextRoom.description, 'roomId':nextRoomID, 'players':players}, safe=True)
     else:
         players = room.playerNames(player_id)
@@ -88,8 +89,10 @@ def move(request):
 @csrf_exempt
 @api_view(["POST"])
 def say(request):
-    # IMPLEMENT
-    return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
+    pusher.trigger(u'message-channel', u'message', {
+        u'username': request.user.username,
+        u'message': request.data["message"]
+    })
 
 @api_view(["GET"])
 def rooms(request):
