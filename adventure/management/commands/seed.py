@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from adventure.models import Player, Room, connectRooms
+from adventure.models import Player, Room
 
 import os.path
 import time
