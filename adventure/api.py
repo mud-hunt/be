@@ -93,6 +93,7 @@ def say(request):
         u'username': request.user.username,
         u'message': request.data["message"]
     })
+    return JsonResponse({'message':"Success"}, safe=False, status=200)
 
 @api_view(["GET"])
 def rooms(request):
