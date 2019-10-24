@@ -29,7 +29,7 @@
       },
       {
         "id": 11,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -44,7 +44,7 @@
       },
       {
         "id": 12,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -59,7 +59,7 @@
       },
       {
         "id": 5,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -87,11 +87,11 @@
     "connections": [
       {
         "id": 20,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 8,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -102,7 +102,7 @@
     "connections": [
       {
         "id": 9,
-        "dir": "w"
+        "dir": "e"
       },
       {
         "id": 23,
@@ -117,7 +117,7 @@
     "connections": [
       {
         "id": 10,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -132,7 +132,7 @@
       },
       {
         "id": 27,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -143,7 +143,7 @@
     "connections": [
       {
         "id": 28,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -154,7 +154,7 @@
     "connections": [
       {
         "id": 29,
-        "dir": "w"
+        "dir": "e"
       },
       {
         "id": 12,
@@ -208,7 +208,7 @@
     "connections": [
       {
         "id": 38,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 18,
@@ -223,7 +223,7 @@
     "connections": [
       {
         "id": 39,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -234,7 +234,7 @@
     "connections": [
       {
       "id": 40,
-      "dir": "e"
+      "dir": "w"
     }]
   },
   {
@@ -255,11 +255,11 @@
     "connections": [
       {
         "id": 42,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 22,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -303,7 +303,7 @@
     "connections": [
       {
         "id": 26,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -314,7 +314,7 @@
     "connections": [
       {
         "id": 51,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -325,7 +325,7 @@
     "connections": [
       {
         "id": 52,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -380,7 +380,7 @@
     "connections": [
       {
         "id": 33,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -391,7 +391,7 @@
     "connections": [
       {
         "id": 34,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 60,
@@ -412,7 +412,7 @@
     "connections": [
       {
         "id": 36,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 62,
@@ -427,7 +427,7 @@
     "connections": [
       {
         "id": 37,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -438,7 +438,7 @@
     "connections": [
       {
         "id": 66,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -449,7 +449,7 @@
     "connections": [
       {
         "id": 67,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -460,7 +460,7 @@
     "connections": [
       {
         "id": 68,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -482,7 +482,7 @@
     "connections": [
       {
         "id": 70,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 42,
@@ -503,7 +503,7 @@
     "connections": [
       {
         "id": 72,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 74,
@@ -511,7 +511,7 @@
       },
       {
         "id": 44,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -522,7 +522,7 @@
     "connections": [
       {
         "id": 45,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -548,7 +548,7 @@
       },
       {
         "id": 47,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -585,7 +585,7 @@
       },
       {
         "id": 50,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -607,7 +607,7 @@
     "connections": [
       {
         "id": 84,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -618,7 +618,7 @@
     "connections": [
       {
         "id": 85,
-        "dir": "w"
+        "dir": "e"
       },
       {
         "id": 53,
@@ -672,7 +672,7 @@
     "connections": [
       {
         "id": 58,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -705,7 +705,7 @@
     "connections": [
       {
         "id": 61,
-        "dir": "e"
+        "dir": "w"
       },
       {
         "id": 95,
@@ -721,7 +721,7 @@
     "connections": [
       {
         "id": 62,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -747,7 +747,7 @@
       },
       {
         "id": 64,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -758,7 +758,7 @@
     "connections": [
       {
         "id": 65,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -851,7 +851,7 @@
     "connections": [
       {
         "id": 74,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -862,7 +862,7 @@
     "connections": [
       {
         "id": 75,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -879,7 +879,7 @@
     "connections": [
       {
         "id": 77,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -902,7 +902,7 @@
     "connections": [
       {
         "id": 80,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -913,7 +913,7 @@
     "connections": [
       {
         "id": 81,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -924,7 +924,7 @@
     "connections": [
       {
         "id": 82,
-        "dir": "w"
+        "dir": "e"
       }
     ]
   },
@@ -1034,7 +1034,7 @@
     "connections": [
       {
         "id": 92,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1045,7 +1045,7 @@
     "connections": [
       {
         "id": 93,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1056,7 +1056,7 @@
     "connections": [
       {
         "id": 94,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1067,7 +1067,7 @@
     "connections": [
       {
         "id": 95,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1084,7 +1084,7 @@
     "connections": [
       {
         "id": 97,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1095,7 +1095,7 @@
     "connections": [
       {
         "id": 98,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
@@ -1112,7 +1112,7 @@
     "connections": [
       {
         "id": 100,
-        "dir": "e"
+        "dir": "w"
       }
     ]
   },
