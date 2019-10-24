@@ -1117,7 +1117,7 @@
     "connections": [
       {
         "id": 94,
-        "dir": "e"
+        "dir": "s"
       }
     ]
   },
@@ -1128,7 +1128,7 @@
     "connections": [
       {
         "id": 95,
-        "dir": "e"
+        "dir": "s"
       }
     ]
   },
@@ -1145,7 +1145,7 @@
     "connections": [
       {
         "id": 97,
-        "dir": "e"
+        "dir": "s"
       }
     ]
   },
@@ -1153,12 +1153,7 @@
     "id": 97,
     "title": "Et et consequat eu elit in laboris dolor mollit.",
     "description": "Quis incididunt consectetur nisi laborum mollit voluptate.",
-    "connections": [
-      {
-        "id": 98,
-        "dir": "e"
-      }
-    ]
+    "connections": []
   },
   {
     "id": 98,
@@ -1170,12 +1165,7 @@
     "id": 99,
     "title": "Et et consequat eu elit in laboris dolor mollit.",
     "description": "Quis incididunt consectetur nisi laborum mollit voluptate.",
-    "connections": [
-      {
-        "id": 100,
-        "dir": "e"
-      }
-    ]
+    "connections": []
   },
   {
     "id": 100,
