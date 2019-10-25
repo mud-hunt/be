@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 } """
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=False)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -135,7 +135,14 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL=False
+
+CORS_ALLOW_CREDENTIALS=True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'https://mudhunt.netlify.com',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -156,5 +163,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-import django_heroku
-django_heroku.settings(locals())
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())

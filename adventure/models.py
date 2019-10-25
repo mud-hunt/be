@@ -14,9 +14,7 @@ class Room(models.Model):
     w_to = models.IntegerField(default=0)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
-        destinationRoom = None
         try:
-            destinationRoom = Room.objects.get(id=destinationRoomID)
             if not hasattr(self, 'id'):
                 raise RuntimeError('Not saved yet')
         except Room.DoesNotExist:
@@ -24,16 +22,16 @@ class Room(models.Model):
         except RuntimeError:
             print("Room not saved yet")
         else:
-            if direction == "n":
+            if direction == "n" and self.n_to == 0 and destinationRoom.s_to == 0:
                 self.n_to = destinationRoomID
                 destinationRoom.s_to = self.id
-            elif direction == "s":
+            elif direction == "s"  and self.s_to == 0 and destinationRoom.n_to == 0:
                 self.s_to = destinationRoomID
                 destinationRoom.n_to = self.id
-            elif direction == "e":
+            elif direction == "e"  and self.e_to == 0 and destinationRoom.w_to == 0:
                 self.e_to = destinationRoomID
                 destinationRoom.w_to = self.id
-            elif direction == "w":
+            elif direction == "w"  and self.w_to == 0 and destinationRoom.e_to == 0:
                 self.w_to = destinationRoomID
                 destinationRoom.e_to = self.id
             else:
